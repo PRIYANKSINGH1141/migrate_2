@@ -20,10 +20,6 @@ jobs:
       APP_NAME: demo-app
 
     steps:
-      - name: Install Git
-        run: |
-          apt-get update
-          apt-get install -y git
       - name: Install Git and Git LFS
         run: |
           apt-get update
