@@ -13,6 +13,7 @@ jobs:
     env:
       APP_NAME: demo-app
     steps:
+    - run: apt install git 
     - uses: actions/checkout@v4.1.0
       with:
         fetch-depth: 20
