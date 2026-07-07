@@ -14,15 +14,20 @@ jobs:
     env:
       APP_NAME: demo-app
     steps:
-    - name: Install Git and Git LFS
-      run: |
-          apt-get update
-          apt-get install -y git git-lfs
-          git lfs install
+   # - name: Install Git and Git LFS
+      #run: |
+         # apt-get update
+         # apt-get install -y git git-lfs
+          #git lfs install
     - uses: actions/checkout@v4.1.0
       with:
         fetch-depth: 20
         lfs: true
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v4.1.0
+      with:
+        name: build
+        path: .     
     - uses: actions/download-artifact@v4.1.0
       with:
         name: test
