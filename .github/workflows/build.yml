@@ -1,6 +1,6 @@
 name: gha-migration/rush_1
 on:
-  workflow_dispatch:
+  push:
 concurrency:
   group: "${{ github.ref }}"
   cancel-in-progress: true
