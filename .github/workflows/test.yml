@@ -11,16 +11,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/download-artifact@v4
         with:
           name: build
           path: .
 
       - run: cat build.txt
-
       - run: echo "Running Tests..."
-
       - run: echo "Tests Passed" > test.txt
 
       - uses: actions/upload-artifact@v4
