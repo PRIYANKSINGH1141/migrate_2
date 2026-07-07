@@ -1,0 +1,17 @@
+name: Development Pipeline
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  test:
+    needs: build
+    uses: ./.github/workflows/test.yml
+
+  deploy:
+    needs: test
+    uses: ./.github/workflows/deploy.yml
