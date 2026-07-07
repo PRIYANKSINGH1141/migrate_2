@@ -1,7 +1,7 @@
 name: gha-migration/rush_1
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}
@@ -20,17 +20,7 @@ jobs:
       APP_NAME: demo-app
 
     steps:
-      - name: Install Git and Git LFS
-        run: |
-          apt-get update
-          apt-get install -y git git-lfs
-          git lfs install
-
       - uses: actions/checkout@v4.1.0
-        with:
-          fetch-depth: 20
-          lfs: true
-
       - run: echo "Building $APP_NAME..."
 
       - run: echo "Docker Image Build Successful" > build.txt
