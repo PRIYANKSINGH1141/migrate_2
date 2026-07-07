@@ -1,7 +1,6 @@
 name: Development Pipeline
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
