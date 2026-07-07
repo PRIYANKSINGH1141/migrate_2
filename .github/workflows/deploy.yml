@@ -21,7 +21,7 @@ jobs:
     - uses: actions/download-artifact@v4.1.0
       with:
         name: test
-        path: test.txt
+        path: .
     - run: echo "Deploying Application..."
     - run: cat test.txt
     - run: echo "Deployment Successful!"
