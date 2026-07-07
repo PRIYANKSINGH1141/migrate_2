@@ -8,8 +8,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     timeout-minutes: 60
     env:
       APP_NAME: demo-app
@@ -30,8 +28,6 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     timeout-minutes: 60
     env:
       APP_NAME: demo-app
@@ -41,6 +37,9 @@ jobs:
         fetch-depth: 20
         lfs: true
     - uses: actions/download-artifact@v4.1.0
+      with:
+        name: build
+        path: .
     - run: echo "Reading artifact from build stage..."
     - run: cat build.txt
     - run: echo "Running Tests..."
@@ -55,8 +54,6 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
     timeout-minutes: 60
     env:
       APP_NAME: demo-app
@@ -66,6 +63,9 @@ jobs:
         fetch-depth: 20
         lfs: true
     - uses: actions/download-artifact@v4.1.0
+      with:
+        name: test
+        path: .
     - run: echo "Deploying Application..."
     - run: cat test.txt
     - run: echo "Deployment Successful!"
