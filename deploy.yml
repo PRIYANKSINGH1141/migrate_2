@@ -9,6 +9,8 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:22.04
     timeout-minutes: 60
     env:
       APP_NAME: demo-app
